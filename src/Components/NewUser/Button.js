@@ -1,6 +1,6 @@
-function Button(){
+function Button(props){
     return(
-        <button type="submit">Adicionar Usuário</button>
+        <button type="submit">{props.children}</button>
     )
 }
 

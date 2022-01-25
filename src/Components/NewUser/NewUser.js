@@ -3,7 +3,7 @@ import Form from './Form';
 function NewUser(props){
     return(
         <section>
-            <Form />
+            <Form onSaveUser={props.onSaveUser}/>
         </section>
     )
 }

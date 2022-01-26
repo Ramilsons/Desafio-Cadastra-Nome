@@ -2,6 +2,7 @@ import LabelInput from './LabelInput';
 import Button from './Button';
 import { useState } from 'react';
 
+import style from './Form.module.css';
 
 function Form(props){ 
     const[enteredName, setEnteredName] = useState('');

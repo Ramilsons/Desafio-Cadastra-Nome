@@ -1,0 +1,27 @@
+label, input{
+    display: block;
+    margin-left: 5%;
+    width: 90%;
+    color: #393E46;
+}
+
+label{
+    color: #222831;
+    font-size: 13px;
+    font-weight: bold;
+
+    margin-top: 20px;
+}
+
+input{
+    border: none;
+    border-bottom: 2px solid #393E46;
+    background-color: transparent;
+    font-size: 20px;
+    margin-bottom: 8px;
+    padding:8px 0 1px;
+}
+
+input:focus{
+    outline: none;
+}

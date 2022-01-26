@@ -11,10 +11,16 @@ function App(props) {
 		setUsersList((prevState) => [userData, ...prevState]);
 	}
 
+	function deleteUserHandler(id){
+		let allUsersAfterDelete = usersList.filter(user => user.id !== Number(id));
+
+		setUsersList(allUsersAfterDelete);
+	}
+
 	return (
 		<div>
 			<NewUser onSaveUser={saveUserHandler}/>
-			<User data={usersList} />
+			<User data={usersList} onDeleteUser={deleteUserHandler} />
 		</div>
 	);
 }

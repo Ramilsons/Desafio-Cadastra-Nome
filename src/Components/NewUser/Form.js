@@ -55,7 +55,7 @@ function Form(props){
     }
 
     return(
-        <div>
+        <>
             { error ? <Modal title={error.title} message={error.message} confirmFunction={errorHandler} /> : ''}
             <form type="submit" onSubmit={sendFormHandler}>
                 <LabelInput forElement="name">Nome: </LabelInput>
@@ -66,7 +66,7 @@ function Form(props){
 
                 <Button>Adicionar Usuário</Button>
             </form>
-        </div>
+        </>
     )
 }
 

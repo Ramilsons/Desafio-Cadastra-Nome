@@ -1,25 +1,21 @@
 import LabelInput from './LabelInput';
 import Button from './Button';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
-import style from './Form.module.css';
+import './Form.module.css';
 import Modal from './Modal';
 
 function Form(props){ 
-    const[enteredName, setEnteredName] = useState('');
-    const[enteredAge, setEnteredAge] = useState(0);
+    const enteredNameRef = useRef();
+    const enteredAgeRef = useRef();
+
     const[error, setError] = useState();
-
-    function inputNameChangedHandler(event){
-        setEnteredName(event.target.value);
-    }
-
-    function inputAgeChangedHandler(event){
-        setEnteredAge(event.target.value);
-    }
 
     function sendFormHandler(event){
         event.preventDefault();
+
+        const enteredName = enteredNameRef.current.value;
+        const enteredAge = enteredAgeRef.current.value;
 
         if(enteredName.trim().length === 0){
             setError({
@@ -38,7 +34,6 @@ function Form(props){
             return;
         }
 
-
         props.onSaveUser({
             id: Math.random(),
             name: enteredName,
@@ -46,8 +41,8 @@ function Form(props){
         });
 
         // reset
-        setEnteredName('');
-        setEnteredAge(0);
+        enteredNameRef.current.value = '';
+        enteredAgeRef.current.value = '';
     }
 
     function errorHandler(){
@@ -59,10 +54,9 @@ function Form(props){
             { error ? <Modal title={error.title} message={error.message} confirmFunction={errorHandler} /> : ''}
             <form type="submit" onSubmit={sendFormHandler}>
                 <LabelInput forElement="name">Nome: </LabelInput>
-                <input type="text" onChange={ inputNameChangedHandler } id="name" name="name" value={ enteredName } />
-                
+                <input ref={enteredNameRef}  type="text" id="name" name="name" />
                 <LabelInput forElement="age">Idade: </LabelInput>
-                <input type="number" onChange={ inputAgeChangedHandler } id="age" name="age" min="0" value={ enteredAge } />
+                <input ref={enteredAgeRef} type="number" id="age" name="age" min="0" />
 
                 <Button>Adicionar Usuário</Button>
             </form>

@@ -1,4 +1,4 @@
-import style from './LabelInput.module.css';
+import './LabelInput.module.css';
 
 function LabelInput(props){
     return(
